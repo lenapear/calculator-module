@@ -4,6 +4,6 @@ export class Operations {
   subtraction() {}
   multiplication() {}
   division() {}
-  power() {}
-  squareRoot() {}
+  // power() {} - not sure if I want to implement yet
+  // squareRoot() {} - not sure if I want to implement yet
 }
