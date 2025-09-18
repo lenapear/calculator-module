@@ -7,15 +7,20 @@ export class Parser {
   }
 
   #tokenize(expression) {
-    const expressionArray = expression.split("")
-    let tokens = []
-    // logic will come later
-  }
+    const tokens = expression.split(" ") // force space format for now
+    let validTokens = []
 
-  #validateExpression(expressionArray) {
-    // check if tokens are not a number
-    // check for invalid operators
+    for (let i = 0; i < tokens.length; i++) {
+      let numberisedToken = Number(tokens[i])
+      if (!Number.isNaN(numberisedToken)) {
+        validTokens.push(tokens[i])
+      } else if (this.validOperators.includes(tokens[i])) {
+        validTokens.push(tokens[i])
+      } else {
+        throw new Error("Invalid expression input. Invalid operator or includes NaN!")
+      }
+    }
     // check if the format is correct: invalid if two numbers or operators come in a row
   }
 
-} // class bracket
+}

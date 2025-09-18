@@ -10,7 +10,5 @@ export class Calculator {
     const Parser = new Parser()
     // ....come back to after Parser is finished
   }
-
-  // #chooseOperation(operation) {} - might not need, might be done inside Parser
 }
 
