@@ -10,9 +10,10 @@ export class Parser {
     const tokens = expression.split(" ") // force space format for now
     let validTokens = []
 
+    // bad readability
     for (let i = 0; i < tokens.length; i++) {
-      let numberisedToken = Number(tokens[i])
-      if (!Number.isNaN(numberisedToken)) {
+      let numberedToken = Number(tokens[i])
+      if (!Number.isNaN(numberedToken)) {
         validTokens.push(tokens[i])
       } else if (this.validOperators.includes(tokens[i])) {
         validTokens.push(tokens[i])
@@ -20,7 +21,32 @@ export class Parser {
         throw new Error("Invalid expression input. Invalid operator or includes NaN!")
       }
     }
-    // check if the format is correct: invalid if two numbers or operators come in a row
+
+    let validExpression = [] // valid tokens and format
+
+    // validate format: invalid if two numbers or operators come in a row
+    // 1. must start and end with a number
+    // 2. if current token is a number the previous has to be an operator and vice versa
+  }
+
+  /**
+   * Checks if a token is an operator
+   * 
+  */  
+  isOperator(token) {
+    return this.validOperators.includes(token)
+  }
+
+  /**
+   * Checks if a token is a number
+   * @param 
+   * @returns 
+   */
+  isNumber(token) {
+    const convert = Number(token)
+    if (Number.isNaN(convert) === false ) {
+      return false
+    } else return true
   }
 
 }
