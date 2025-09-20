@@ -1,4 +1,7 @@
-// represents the Parser class for the string expression
+/**
+ * Represents the Parser class
+ * lena's note: only validates
+ */
 export class Parser {
   validOperators = ["+", "-", "*", "/"]
 
@@ -7,6 +10,11 @@ export class Parser {
     this.tokenize(expression)
   }
 
+  /**
+   * Tokenize an expression and validates it.
+   * @param {*} expression 
+   * @returns 
+   */
   tokenize(expression) {
     this.validTokens = []
     const tokenizedExpression = this.splitTokens(expression)
@@ -24,7 +32,8 @@ export class Parser {
    * @param {*} expression 
    */
   splitTokens(expression) {
-    return expression.split(" ") // force space format for now
+    // force space format for now
+    return expression.split(" ").filter(token => token !== "")
   }
 
   /**

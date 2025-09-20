@@ -1,14 +1,21 @@
-import {Parser} from "./Parser.js"
+import { Parser } from "./Parser.js"
 
-// represents the Calculator class
+/**
+ * Represents the Calculator class
+ * lena's notes: orchestrates the flow
+ */
 export class Calculator {
   constructor(expression) {
-    return calculate(expression)
+    this.expression = expression // can this have the same name as in Parser.js?? double check
   }
 
-  #calculate(expression) {
+  /**
+   * Validates the input expression
+   * @param {*} expression 
+   */
+  validateExpression(expression) {
     const Parser = new Parser()
-    // ....come back to after Parser is finished
+    Parser.tokenize(expression)
   }
 }
 
