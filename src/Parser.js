@@ -10,13 +10,13 @@ export class Parser {
     const tokens = expression.split(" ") // force space format for now
     let validTokens = []
 
-    // bad readability
-    for (let i = 0; i < tokens.length - 1; i++) {
-      let numberedToken = Number(tokens[i])
-      if (!Number.isNaN(numberedToken)) {
-        validTokens.push(tokens[i])
-      } else if (this.validOperators.includes(tokens[i])) {
-        validTokens.push(tokens[i])
+    for (let i = 0; i < tokens.length; i++) {
+      let currentToken = tokens[i]
+
+      if (this.isNumber(currentToken)) {
+        validTokens.push(Number(currentToken)) // convert it into a number first
+      } else if (this.isOperator(currentToken)) {
+        validTokens.push(currentToken)
       } else {
         throw new Error("Invalid expression input. Expression includes invalid operator or NaN!")
       }
