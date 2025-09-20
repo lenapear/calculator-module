@@ -8,6 +8,7 @@ export class Parser {
   }
 
   tokenize(expression) {
+    this.validTokens = []
     const tokenizedExpression = this.splitTokens(expression)
     this.validTokens = this.validateTokens(tokenizedExpression)
 
