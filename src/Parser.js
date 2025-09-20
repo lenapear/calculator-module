@@ -42,8 +42,8 @@ export class Parser {
   isNumber(token) {
     const convert = Number(token)
     if (Number.isNaN(convert) === false ) {
-      return false
-    } else return true
+      return true
+    } else return false
   }
 
 
