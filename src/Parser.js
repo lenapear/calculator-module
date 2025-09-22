@@ -12,14 +12,16 @@ export class Parser {
 
   /**
    * Tokenize an expression and validates it.
-   * @param {*} expression 
-   * @returns 
+   *
+   * @param {string} expression - The user's expression input to be tokenized.
+   * @returns {array} validTokens - The array of validated tokens.
    */
   tokenize(expression) {
     this.validTokens = []
     const tokenizedExpression = this.splitTokens(expression)
     this.validTokens = this.validateTokens(tokenizedExpression)
 
+    // validate Format: / make method called validateFormat? 
     this.checkFirstToken()
     this.checkLastToken()
     this.checkSequence()
@@ -28,8 +30,9 @@ export class Parser {
   }
 
   /**
-   * Splits the expression into tokens
-   * @param {*} expression 
+   * Splits the expression into an array of tokens.
+   * 
+   * @param {string} expression - The user's expression input to be tokenized.
    */
   splitTokens(expression) {
     // force space format for now
@@ -37,8 +40,9 @@ export class Parser {
   }
 
   /**
-   * Validate tokens
-   * @param the tokens to be validated
+   * Validate the tokens to only allow numbers and valid operators.
+   *
+   * @param {array} tokens - The tokens to be validated.
    */
   validateTokens(tokens) {
     for (let i = 0; i < tokens.length; i++) {
@@ -56,18 +60,20 @@ export class Parser {
   }
 
   /**
-   * Checks if a token is an operator
-   * @param the token to be checked
-   * @returns boolean
+   * Checks if a token is an operator or not.
+   *
+   * @param {number|string} token - The token to be checked.
+   * @returns {boolean} true if the token is an operator, false if not.
   */  
   isOperator(token) {
     return this.validOperators.includes(token)
   }
 
   /**
-   * Checks if a token is a number
-   * @param the token to be checked
-   * @returns boolean
+   * Checks if a token is a number or not.
+   *
+   * @param {number|string} token - The token to be checked.
+   * @returns {boolean} true if the token is a number, false if not.
    */
   isNumber(token) {
     const convert = Number(token)
@@ -78,16 +84,20 @@ export class Parser {
 
 
   /**
-   * Checks the first token of an expression
+   * Checks if the first token is an operator.
+   * 
+   * @throws {error} if it is an operator.
    */
-  checkFirstToken() { // good understandability
+  checkFirstToken() {
     if (this.isOperator(this.validTokens[0])) {
       throw new Error("Expression cannot start with an operator")
     }
   }
 
   /**
-   * Check the last token of an expression
+   * Checks if the last token is an operator.
+   * 
+   * @throws {error} if it is an operator.
    */
   checkLastToken() {
     if (this.isOperator(this.validTokens[this.validTokens.length - 1])) {
@@ -96,7 +106,10 @@ export class Parser {
   }
 
   /**
-   * Check the sequence of the expression to not have two operators or numbers in a row
+   * Check the sequence of the expression to not have two operators or numbers in a row.
+   * 
+   * @throws {error} if there are two numbers in a row.
+   * @throws {error}if there are two operators in a row.
    */
   checkSequence() {
     for (let i = 1; i < this.validTokens.length; i++) {

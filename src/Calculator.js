@@ -1,9 +1,10 @@
-import { Parser } from "./Parser.js"
-
 /**
  * Represents the Calculator class
  * lena's notes: orchestrates the flow
  */
+
+import { Parser } from "./Parser.js"
+
 export class Calculator {
   constructor(expression) {
     this.expression = expression // can this have the same name as in Parser.js?? double check
