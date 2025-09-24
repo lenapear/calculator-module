@@ -1,0 +1,9 @@
+"filename", "language", "JavaScript", "JSON", "Markdown", "comment", "blank", "total"
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/README.md", "Markdown", 0, 0, 2, 0, 1, 3
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/package.json", "JSON", 0, 25, 0, 0, 1, 26
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/Calculator.js", "JavaScript", 10, 0, 0, 8, 5, 23
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/Evaluator.js", "JavaScript", 0, 0, 0, 0, 1, 1
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/History.js", "JavaScript", 4, 0, 0, 1, 0, 5
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/Parser.js", "JavaScript", 66, 0, 0, 54, 15, 135
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/ShuntingYard.js", "JavaScript", 15, 0, 0, 5, 5, 25
+"Total", "-", 95, 25, 2, 68, 28, 218

@@ -123,7 +123,7 @@ export class Parser {
   }
 
   /**
-   * Validates the format of the tokens.
+   * Validates the format of the tokens by checking the first and last token and the sequence.
    * 
    * @param {array} tokens
    */
