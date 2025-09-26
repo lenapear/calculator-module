@@ -33,14 +33,6 @@ try {
 
 const parserHelper = new Parser("1 + 1")
 
-// isOperator
-console.log("isOperator('+'):", parserHelper.isOperator("+")) // true
-console.log("isOperator('5'):", parserHelper.isOperator("5")) // false
-
-// isNumber
-console.log("isNumber('5'):", parserHelper.isNumber("5")) // true
-console.log("isNumber('+'):", parserHelper.isNumber("+")) // false
-
 // splitTokens
 console.log("splitTokens('3 + 4 * 2'):", parserHelper.splitTokens("3 + 4 * 2"))
 // expected: ["3", "+", "4", "*", "2"]

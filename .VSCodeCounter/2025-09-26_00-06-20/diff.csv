@@ -1,0 +1,6 @@
+"filename", "language", "JSON", "JavaScript", "comment", "blank", "total"
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/package.json", "JSON", 2, 0, 0, 0, 2
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/ShuntingYard.js", "JavaScript", 0, 27, 36, 7, 70
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/test/Parser.test.js", "JavaScript", 0, 50, 21, 15, 86
+"/Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/test/ShuntingYard.test.js", "JavaScript", 0, 27, 8, 9, 44
+"Total", "-", 2, 104, 65, 31, 202
