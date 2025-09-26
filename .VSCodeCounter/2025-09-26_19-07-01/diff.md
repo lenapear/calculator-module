@@ -1,25 +1,21 @@
 # Diff Summary
 
-Date : 2025-09-26 00:06:20
+Date : 2025-09-26 19:07:01
 
-Directory /Users/lenale/courses/1dv610/laboration/1dv610-laboration-2
+Directory /Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src
 
-Total : 4 files,  106 codes, 65 comments, 31 blanks, all 202 lines
+Total : 3 files,  0 codes, 0 comments, 0 blanks, all 0 lines
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| JavaScript | 3 | 104 | 65 | 31 | 200 |
-| JSON | 1 | 2 | 0 | 0 | 2 |
+| JavaScript | 3 | 0 | 0 | 0 | 0 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 4 | 106 | 65 | 31 | 202 |
-| . (Files) | 1 | 2 | 0 | 0 | 2 |
-| src | 1 | 27 | 36 | 7 | 70 |
-| test | 2 | 77 | 29 | 24 | 130 |
+| . | 3 | 0 | 0 | 0 | 0 |
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

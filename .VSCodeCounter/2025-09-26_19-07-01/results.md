@@ -1,21 +1,21 @@
 # Summary
 
-Date : 2025-09-26 00:07:40
+Date : 2025-09-26 19:07:01
 
-Directory /Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src/ShuntingYard.js
+Directory /Users/lenale/courses/1dv610/laboration/1dv610-laboration-2/src
 
-Total : 1 files,  42 codes, 41 comments, 12 blanks, all 95 lines
+Total : 6 files,  122 codes, 104 comments, 33 blanks, all 259 lines
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| JavaScript | 1 | 42 | 41 | 12 | 95 |
+| JavaScript | 6 | 122 | 104 | 33 | 259 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 1 | 42 | 41 | 12 | 95 |
+| . | 6 | 122 | 104 | 33 | 259 |
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

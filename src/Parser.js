@@ -1,6 +1,6 @@
 /**
  * Represents the Parser class
- * lena's note: only validates
+ * lena's note: only validates and Parse the expression
  */
 
 import { isOperator, isNumber } from "./Helpers.js"
@@ -18,7 +18,7 @@ export class Parser {
    * @param {string} expression - The user's expression input to be tokenized.
    * @returns {array} validTokens - The array of validated tokens.
    */
-  tokenize(expression) {
+  tokenize(expression) { // change name to validateAndParse?
     const tokenizedExpression = this.splitTokens(expression)
     this.validTokens = this.validateTokens(tokenizedExpression)
     this.validateFormat(this.validTokens)
