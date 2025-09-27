@@ -15,35 +15,34 @@ export class Evaluator {
     let stack = []
 
     for (let i = 0; i < postfixExpression.length; i++) {
-      current = postfixExpression[i]
+      let current = postfixExpression[i]
 
-      while (stack.length > 1) {
-        if (isNumber(current)) {
-          stack.push(current)
-        } else if (isOperator(current)) {
-          let nr1 = stack.pop()
-          let nr2 = stack.pop()
-          calculate(nr1, nr2, current)
-        }
-      } // while
+      if (isNumber(current)) {
+        stack.push(current)
+      } else if (isOperator(current)) {
+        let rightOperand = stack.pop()
+        let leftOperand = stack.pop()
+        let result = this.calculate(leftOperand, rightOperand, current)
+        stack.push(result)
+      }    
     } // for-loop
     
     if (stack.length === 1) {
-      result = stack[0]
+      let result = stack[0]
+      return result
     }
-    return result
   } // evaluate
 
-  calculate(nr1, nr2, operator) {
+  calculate(leftOperand, rightOperand, operator) {
     switch (operator) {
       case "+": 
-        return this.addition(nr1, nr2)
+        return this.addition(leftOperand, rightOperand)
       case "-":
-        return this.subtraction(nr1, nr2)
+        return this.subtraction(leftOperand, rightOperand)
       case "*":
-        return this.multiplication(nr1, nr2)
+        return this.multiplication(leftOperand, rightOperand)
       case "/":
-        return this.division(nr1, nr2)
+        return this.division(leftOperand, rightOperand)
     } 
   }
 
