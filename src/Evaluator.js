@@ -8,30 +8,38 @@ import { isOperator, isNumber } from "./Helpers.js"
 export class Evaluator {
 
   evaluate(postfixExpression) {
-    // loop through each token
-    // if number, push to stack
-    // if operator, pop the last 2 tokens and put it back in the stack
-    // continue until stack.length is 1
     let stack = []
+    for (let token of postfixExpression) {
+      this.processToken(token, stack)
+    }
+    return this.getFinalResult(stack)
+  } // evaluate
 
-    for (let i = 0; i < postfixExpression.length; i++) {
-      let current = postfixExpression[i]
 
-      if (isNumber(current)) {
-        stack.push(current)
-      } else if (isOperator(current)) {
-        let rightOperand = stack.pop()
-        let leftOperand = stack.pop()
-        let calculationResult = this.calculate(leftOperand, rightOperand, current)
-        stack.push(calculationResult)
-      }    
-    } // for-loop
-    
+  processToken(token, stack) {
+    if (isNumber(token)) {
+      this.processNumber(token, stack)
+    } else if (isOperator(token)) {
+      this.processOperator(token, stack)
+    }
+  }
+  processNumber(number, stack) {
+    stack.push(number)
+  }
+
+  processOperator(operator, stack) {
+    let rightOperand = stack.pop()
+      let leftOperand = stack.pop()
+      let calculationResult = this.calculate(leftOperand, rightOperand, operator)
+      stack.push(calculationResult)
+  }
+
+  getFinalResult(stack) {
     if (stack.length === 1) {
       let finalResult = stack[0]
       return finalResult
     }
-  } // evaluate
+  }
 
   calculate(leftOperand, rightOperand, operator) {
     switch (operator) {
