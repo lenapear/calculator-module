@@ -22,14 +22,14 @@ export class Evaluator {
       } else if (isOperator(current)) {
         let rightOperand = stack.pop()
         let leftOperand = stack.pop()
-        let result = this.calculate(leftOperand, rightOperand, current)
-        stack.push(result)
+        let calculationResult = this.calculate(leftOperand, rightOperand, current)
+        stack.push(calculationResult)
       }    
     } // for-loop
     
     if (stack.length === 1) {
-      let result = stack[0]
-      return result
+      let finalResult = stack[0]
+      return finalResult
     }
   } // evaluate
 
