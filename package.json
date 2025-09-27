@@ -11,7 +11,8 @@
   "scripts": {
     "test": "node test/*.test.js",
     "test:parser": "node test/Parser.test.js", 
-    "test:shuntingyard": "node test/ShuntingYard.test.js"
+    "test:shuntingyard": "node test/ShuntingYard.test.js",
+    "test:evaluator": "node test/Evaluator.test.js"
   },
   "repository": {
     "type": "git",
