@@ -26,7 +26,7 @@ export class Calculator {
    */
   validateExpression(expression) {
     const parser = new Parser()
-    const infixExpression = parser.tokenize(expression)
+    const infixExpression = parser.validateAndParse(expression)
     return infixExpression
   }
 

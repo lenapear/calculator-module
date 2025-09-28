@@ -7,18 +7,13 @@ import { isOperator, isNumber } from "./Helpers.js"
 
 export class Parser {
 
-  constructor(expression) {
-    this.expression = expression
-    this.tokenize(expression)
-  }
-
   /**
-   * Tokenize an expression and validates it.
+   * Validate and parse and expression into tokens.
    *
    * @param {string} expression - The user's expression input to be tokenized.
    * @returns {array} validTokens - The array of validated tokens.
    */
-  tokenize(expression) { // change name to validateAndParse?
+  validateAndParse(expression) {
     const tokenizedExpression = this.splitTokens(expression)
     this.validTokens = this.validateTokens(tokenizedExpression)
     this.validateFormat(this.validTokens)
