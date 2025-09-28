@@ -13,12 +13,12 @@ export class Parser {
    * @param {string} expression - The user's expression input to be tokenized.
    * @returns {array} validTokens - The array of validated tokens.
    */
-  validateAndParse(expression) {
+  validateAndParse(expression) { // is parseExpression better??
     const tokenizedExpression = this.splitTokens(expression)
-    this.validTokens = this.validateTokens(tokenizedExpression)
-    this.validateFormat(this.validTokens)
+    const validTokens = this.validateTokens(tokenizedExpression)
+    this.validateFormat(validTokens)
 
-    return this.validTokens
+    return validTokens
   }
 
   /**
