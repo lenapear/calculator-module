@@ -7,6 +7,12 @@ import { isOperator, isNumber } from "./Helpers.js"
 
 export class Evaluator {
 
+  /**
+   * Evaluates the postfixExpression
+   *
+   * @param {array} postfixExpression 
+   * @returns {number} the final evaluated result
+   */
   evaluate(postfixExpression) {
     let stack = []
     for (let token of postfixExpression) {
@@ -15,7 +21,12 @@ export class Evaluator {
     return this.getFinalResult(stack)
   } // evaluate
 
-
+  /**
+   * Processes the tokens and call the methods according to the type of token.
+   * 
+   * @param {string | number} token 
+   * @param {array} stack 
+   */
   processToken(token, stack) {
     if (isNumber(token)) {
       this.processNumber(token, stack)
@@ -23,10 +34,23 @@ export class Evaluator {
       this.processOperator(token, stack)
     }
   }
+
+  /**
+   * Pushes the number token inside the stack.
+   * 
+   * @param {number} number
+   * @param {array} stack 
+   */
   processNumber(number, stack) {
     stack.push(number)
   }
 
+  /**
+   * Process the operator by calculating the last 2 operands in the stack.
+   *
+   * @param {string} operator 
+   * @param {array} stack 
+   */
   processOperator(operator, stack) {
     let rightOperand = stack.pop()
       let leftOperand = stack.pop()
@@ -34,6 +58,12 @@ export class Evaluator {
       stack.push(calculationResult)
   }
 
+  /**
+   * Gets the final result.
+   *
+   * @param {array} stack 
+   * @returns {number} finalResult
+   */
   getFinalResult(stack) {
     if (stack.length === 1) {
       let finalResult = stack[0]
@@ -41,6 +71,14 @@ export class Evaluator {
     }
   }
 
+  /**
+   * Calculates according to the operator.
+   *
+   * @param {number} leftOperand 
+   * @param {number} rightOperand 
+   * @param {string} operator 
+   * @returns {number}
+   */
   calculate(leftOperand, rightOperand, operator) {
     switch (operator) {
       case "+": 
@@ -69,4 +107,4 @@ export class Evaluator {
   division(a, b) {
     return a / b
   }
-} // class
+}

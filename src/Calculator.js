@@ -9,10 +9,6 @@ import { ShuntingYard} from "./ShuntingYard.js"
 
 
 export class Calculator {
-  constructor(expression) {
-    this.expression = expression
-    this.calculate(expression)
-  }
 
   calculate(expression) {
     const validatedExpression = this.validateExpression(expression)
@@ -24,22 +20,22 @@ export class Calculator {
    * Validates the input expression
    * @param {*} expression 
    */
-  validateExpression(expression) {
+  parseExpression(expression) {
     const parser = new Parser()
-    const infixExpression = parser.validateAndParse(expression)
-    return infixExpression
+    const infixTokens = parser.validateAndParse(expression)
+    return infixTokens
   }
 
   convertExpression(infixExpression) {
     const shuntingYard = new ShuntingYard()
-    const postfixExpression = shuntingYard.toPostfix(infixExpression)
-    return postfixExpression
+    const postfixTokens = shuntingYard.toPostfix(infixExpression)
+    return postfixTokens
   }
 
   evaluateExpression(postfixExpression) {
     const evaluator = new Evaluator()
-    const evaluatedExpression = evaluator.evaluate(postfixExpression)
-    return evaluatedExpression
+    const result = evaluator.evaluate(postfixExpression)
+    return result
   }
 }
 
