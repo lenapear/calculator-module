@@ -8,7 +8,7 @@ export class History {
   }
 
   add(expression, result) {
-    this.calculationHistory.expression = result
+    this.calculationHistory[expression] = result
   }
 
   get(expression) {
