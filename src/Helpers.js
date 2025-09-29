@@ -21,3 +21,11 @@ export function isNumber(token) {
     return true
   } else return false
 }
+
+export function isDigit(char) {
+  return /\d/.test(char)
+}
+
+export function isDecimal(char) {
+  return char === "," || char === "."
+}
