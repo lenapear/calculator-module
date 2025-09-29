@@ -4,16 +4,24 @@
  */
 
 import { Evaluator } from "./Evaluator.js"
+import { History } from "./History.js"
 import { Parser } from "./Parser.js"
 import { ShuntingYard} from "./ShuntingYard.js"
 
 
 export class Calculator {
 
+  constructor() {
+    this.history = new History
+  }
+
   calculate(expression) {
     const validatedExpression = this.validateExpression(expression)
     const convertedExpression = this.convertExpression(validatedExpression)
-    return this.evaluateExpression(convertedExpression)
+    const result = this.evaluateExpression(convertedExpression)
+
+    this.updateCalcHistory(expression, result)
+    return result
   }
 
   parseExpression(expression) {
@@ -34,6 +42,8 @@ export class Calculator {
     return result
   }
 
-  updateCalcHistory() {}
+  updateCalcHistory(expression, result ) {
+    this.history.add(expression, result)
+  }
 }
 
