@@ -1,5 +1,25 @@
-// represents the History class that keeps track of the calculations
+/**
+ * Represents the History class
+ * lena's note: handles the calculation history
+ */
 export class History {
-  add(expression, result) {}
-  list() {}
+  constructor() {
+    this.calculationHistory = {}
+  }
+
+  add(expression, result) {
+    this.calculationHistory.expression = result
+  }
+
+  get(expression) {
+    return this.calculationHistory[expression]
+  }
+
+  remove(expression) {
+    delete this.calculationHistory[expression]
+  }
+
+  list() {
+    return this.calculationHistory
+  }
 }

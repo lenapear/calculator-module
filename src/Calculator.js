@@ -16,10 +16,6 @@ export class Calculator {
     return this.evaluateExpression(convertedExpression)
   }
 
-  /**
-   * Validates the input expression
-   * @param {*} expression 
-   */
   parseExpression(expression) {
     const parser = new Parser()
     const infixTokens = parser.validateAndParse(expression)
@@ -37,5 +33,7 @@ export class Calculator {
     const result = evaluator.evaluate(postfixExpression)
     return result
   }
+
+  updateCalcHistory() {}
 }
 

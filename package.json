@@ -12,7 +12,8 @@
     "test": "node test/*.test.js",
     "test:parser": "node test/Parser.test.js", 
     "test:shuntingyard": "node test/ShuntingYard.test.js",
-    "test:evaluator": "node test/Evaluator.test.js"
+    "test:evaluator": "node test/Evaluator.test.js",
+    "test:calculator": "node test/Calculator.test.js"
   },
   "repository": {
     "type": "git",
