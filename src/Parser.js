@@ -1,18 +1,21 @@
 /**
- * Represents the Parser class
+ * Represents the Parser class.
+ * Responsible for validating and tokenizing mathematical expressions.
  */
 
-import { isOperator, isNumber, isDigit, isDecimal } from "./Helpers.js"
+import { isOperator, isNumber, isDigit, isDecimal } from './Helpers.js'
 
+/**
+ *
+ */
 export class Parser {
-
   /**
-   * Validate and parse and expression into tokens.
+   * Validates and parses an expression into tokens.
    *
    * @param {string} expression - The user's expression input to be tokenized.
-   * @returns {Array<string|number>} validTokens - The array of validated tokens.
+   * @returns {Array<string|number>} The array of validated tokens.
    */
-  validateAndParse(expression) { // is parseExpression better??
+  validateAndParse (expression) {
     const tokenizedExpression = this.splitTokens(expression)
     const validTokens = this.validateTokens(tokenizedExpression)
     this.validateFormat(validTokens)
@@ -22,16 +25,17 @@ export class Parser {
 
   /**
    * Splits the expression into an array of tokens.
-   * 
-   * @param {string} expression - The user's expression input to be tokenized.
+   *
+   * @param {string} expression - The user's expression input to be split.
+   * @returns {Array<string|number>} The array of raw tokens.
    */
-  splitTokens(expression) {
-    let expressionArray = expression.split("")
-    let tokenizedExpression = []
-    let buffer = []
-    
-    for (let char of expressionArray) {
-      if (char === " ") continue 
+  splitTokens (expression) {
+    const expressionArray = expression.split('')
+    const tokenizedExpression = []
+    const buffer = []
+
+    for (const char of expressionArray) {
+      if (char === ' ') continue
       if (isDigit(char) || isDecimal(char)) {
         this.handleNumberChar(char, buffer)
       } else if (isOperator(char)) {
@@ -47,23 +51,23 @@ export class Parser {
   }
 
   /**
-   * Handles digit characters or decimals.
+   * Handles a digit or decimal character in the expression.
    *
-   * @param {number | string} char 
-   * @param {Array<string|number>} buffer 
+   * @param {string|number} char - The current character being processed.
+   * @param {Array<string|number>} buffer - The buffer storing number characters.
    */
-  handleNumberChar(char, buffer) {
-  buffer.push(char)
+  handleNumberChar (char, buffer) {
+    buffer.push(char)
   }
 
   /**
-   * Handles operator characters.
+   * Handles an operator character in the expression.
    *
-   * @param {string} char 
-   * @param {Array<string|number>} buffer 
-   * @param {Array<string|number>} tokenizedExpression 
+   * @param {string} char - The operator character.
+   * @param {Array<string|number>} buffer - The buffer storing number characters.
+   * @param {Array<string|number>} tokenizedExpression - The array of collected tokens.
    */
-  handleOperator(char, buffer, tokenizedExpression) {
+  handleOperator (char, buffer, tokenizedExpression) {
     if (buffer.length > 0) {
       this.flushBuffer(buffer, tokenizedExpression)
     }
@@ -71,86 +75,90 @@ export class Parser {
   }
 
   /**
-   * Flushes the buffer as a string token (conversion to number happens in validation)
-   * 
-   * @param {Array<string|number>} buffer 
-   * @param {Array<string|number>} tokenizedExpression 
+   * Flushes the buffer into the tokenized expression as a single string token.
+   *
+   * @param {Array<string|number>} buffer - The buffer storing number characters.
+   * @param {Array<string|number>} tokenizedExpression - The array of collected tokens.
    */
-  flushBuffer(buffer, tokenizedExpression) {
-    tokenizedExpression.push(buffer.join(""))
+  flushBuffer (buffer, tokenizedExpression) {
+    tokenizedExpression.push(buffer.join(''))
     buffer.length = 0
   }
 
   /**
-   * Checks if the first token is an operator.
-   * 
-   * @throws {error} if it is an operator.
+   * Checks if the first token is invalid (an operator).
+   *
+   * @param {Array<string|number>} tokens - The list of tokens to check.
+   * @throws {Error} If the first token is an operator.
    */
-  checkFirstToken(tokens) {
+  checkFirstToken (tokens) {
     if (isOperator(tokens[0])) {
-      throw new Error("Expression cannot start with an operator")
+      throw new Error('Expression cannot start with an operator')
     }
   }
 
   /**
-   * Checks if the last token is an operator.
-   * 
-   * @throws {error} if it is an operator.
+   * Checks if the last token is invalid (an operator).
+   *
+   * @param {Array<string|number>} tokens - The list of tokens to check.
+   * @throws {Error} If the last token is an operator.
    */
-  checkLastToken(tokens) {
+  checkLastToken (tokens) {
     if (isOperator(tokens[tokens.length - 1])) {
-      throw new Error("Expression cannot end with an operator")
+      throw new Error('Expression cannot end with an operator')
     }
   }
 
   /**
-   * Check the sequence of the expression to not have two operators or numbers in a row.
-   * 
-   * @throws {error} if there are two numbers in a row.
-   * @throws {error}if there are two operators in a row.
+   * Checks the sequence of tokens for invalid patterns.
+   *
+   * @param {Array<string|number>} tokens - The list of tokens to check.
+   * @throws {Error} If two numbers or two operators occur in a row.
    */
-  checkSequence(tokens) {
+  checkSequence (tokens) {
     for (let i = 1; i < tokens.length; i++) {
-      let previous = tokens[i-1]
-      let current = tokens[i]
+      const previous = tokens[i - 1]
+      const current = tokens[i]
 
       if (isNumber(current) && isNumber(previous)) {
-        throw new Error("Two numbers in a row is not allowed.")
+        throw new Error('Two numbers in a row is not allowed.')
       }
 
       if (isOperator(current) && isOperator(previous)) {
-        throw new Error("Two operators in a row is not allowed.")
+        throw new Error('Two operators in a row is not allowed.')
       }
     }
   }
 
   /**
-   * Validate the tokens to only allow numbers and valid operators.
+   * Validates that tokens are either numbers or valid operators.
    *
    * @param {Array<string|number>} tokens - The tokens to be validated.
+   * @returns {Array<string|number>} The array of validated tokens.
+   * @throws {Error} If an invalid token is found.
    */
-  validateTokens(tokens) {
+  validateTokens (tokens) {
     const validTokens = []
     for (let i = 0; i < tokens.length; i++) {
-      let currentToken = tokens[i]
+      const currentToken = tokens[i]
 
       if (isNumber(currentToken)) {
         validTokens.push(Number(currentToken)) // convert it into a number first
       } else if (isOperator(currentToken)) {
         validTokens.push(currentToken)
       } else {
-        throw new Error("Invalid token in expression.")
+        throw new Error('Invalid token in expression.')
       }
     }
     return validTokens
   }
 
   /**
-   * Validates the format of the tokens by checking the first and last token and the sequence.
-   * 
-   * @param {Array<string|number>} tokens
+   * Validates the format of the tokens by checking the first, last, and sequence.
+   *
+   * @param {Array<string|number>} tokens - The tokens to be validated.
    */
-  validateFormat(tokens) {
+  validateFormat (tokens) {
     this.checkFirstToken(tokens)
     this.checkLastToken(tokens)
     this.checkSequence(tokens)

@@ -2,19 +2,21 @@
  * Represents the Evaluator class
  */
 
-import { isOperator, isNumber } from "./Helpers.js"
+import { isOperator, isNumber } from './Helpers.js'
 
+/**
+ *
+ */
 export class Evaluator {
-
   /**
    * Evaluates the postfixExpression
    *
-   * @param {Array<string|number>} postfixExpression 
+   * @param {Array<string|number>} postfixExpression
    * @returns {number} the final evaluated result
    */
-  evaluate(postfixExpression) {
-    let stack = []
-    for (let token of postfixExpression) {
+  evaluate (postfixExpression) {
+    const stack = []
+    for (const token of postfixExpression) {
       this.processToken(token, stack)
     }
     return this.getFinalResult(stack)
@@ -22,11 +24,11 @@ export class Evaluator {
 
   /**
    * Processes the tokens and call the methods according to the type of token.
-   * 
-   * @param {string | number} token 
-   * @param {Array<number>} stack 
+   *
+   * @param {string | number} token
+   * @param {Array<number>} stack
    */
-  processToken(token, stack) {
+  processToken (token, stack) {
     if (isNumber(token)) {
       this.processNumber(token, stack)
     } else if (isOperator(token)) {
@@ -36,36 +38,36 @@ export class Evaluator {
 
   /**
    * Pushes the number token inside the stack.
-   * 
+   *
    * @param {number} number
-   * @param {Array<number>} stack 
+   * @param {Array<number>} stack
    */
-  processNumber(number, stack) {
+  processNumber (number, stack) {
     stack.push(number)
   }
 
   /**
    * Process the operator by calculating the last 2 operands in the stack.
    *
-   * @param {string} operator 
-   * @param {Array<number>} stack 
+   * @param {string} operator
+   * @param {Array<number>} stack
    */
-  processOperator(operator, stack) {
-    let rightOperand = stack.pop()
-      let leftOperand = stack.pop()
-      let calculationResult = this.calculate(leftOperand, rightOperand, operator)
-      stack.push(calculationResult)
+  processOperator (operator, stack) {
+    const rightOperand = stack.pop()
+    const leftOperand = stack.pop()
+    const calculationResult = this.calculate(leftOperand, rightOperand, operator)
+    stack.push(calculationResult)
   }
 
   /**
    * Gets the final result.
    *
-   * @param {Array<number>} stack 
+   * @param {Array<number>} stack
    * @returns {number} finalResult
    */
-  getFinalResult(stack) {
+  getFinalResult (stack) {
     if (stack.length === 1) {
-      let finalResult = stack[0]
+      const finalResult = stack[0]
       return finalResult
     }
   }
@@ -73,37 +75,57 @@ export class Evaluator {
   /**
    * Calculates according to the operator.
    *
-   * @param {number} leftOperand 
-   * @param {number} rightOperand 
-   * @param {string} operator 
+   * @param {number} leftOperand
+   * @param {number} rightOperand
+   * @param {string} operator
    * @returns {number}
    */
-  calculate(leftOperand, rightOperand, operator) {
+  calculate (leftOperand, rightOperand, operator) {
     switch (operator) {
-      case "+": 
+      case '+':
         return this.addition(leftOperand, rightOperand)
-      case "-":
+      case '-':
         return this.subtraction(leftOperand, rightOperand)
-      case "*":
+      case '*':
         return this.multiplication(leftOperand, rightOperand)
-      case "/":
+      case '/':
         return this.division(leftOperand, rightOperand)
-    } 
+    }
   }
 
-  addition(a, b) {
+  /**
+   *
+   * @param a
+   * @param b
+   */
+  addition (a, b) {
     return a + b
   }
 
-  subtraction(a, b) {
+  /**
+   *
+   * @param a
+   * @param b
+   */
+  subtraction (a, b) {
     return a - b
   }
 
-  multiplication(a, b) {
+  /**
+   *
+   * @param a
+   * @param b
+   */
+  multiplication (a, b) {
     return a * b
   }
 
-  division(a, b) {
+  /**
+   *
+   * @param a
+   * @param b
+   */
+  division (a, b) {
     return a / b
   }
 }

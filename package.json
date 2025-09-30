@@ -10,10 +10,12 @@
   },
   "scripts": {
     "test": "node test/*.test.js",
-    "test:parser": "node test/Parser.test.js", 
+    "test:parser": "node test/Parser.test.js",
     "test:shuntingyard": "node test/ShuntingYard.test.js",
     "test:evaluator": "node test/Evaluator.test.js",
-    "test:calculator": "node test/Calculator.test.js"
+    "test:calculator": "node test/Calculator.test.js",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,11 @@
   "bugs": {
     "url": "https://github.com/lenapear/1dv610-laboration-2/issues"
   },
-  "homepage": "https://github.com/lenapear/1dv610-laboration-2#readme"
+  "homepage": "https://github.com/lenapear/1dv610-laboration-2#readme",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.36.0",
+    "@lnu/eslint-config": "^1.1.10",
+    "eslint": "^8.57.1"
+  }
 }

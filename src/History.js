@@ -2,23 +2,42 @@
  * Represents the History class
  */
 export class History {
-  constructor() {
+  /**
+   *
+   */
+  constructor () {
     this.calculationHistory = {}
   }
 
-  add(expression, result) {
+  /**
+   *
+   * @param expression
+   * @param result
+   */
+  add (expression, result) {
     this.calculationHistory[expression] = result
   }
 
-  get(expression) {
+  /**
+   *
+   * @param expression
+   */
+  get (expression) {
     return this.calculationHistory[expression]
   }
 
-  remove(expression) {
+  /**
+   *
+   * @param expression
+   */
+  remove (expression) {
     delete this.calculationHistory[expression]
   }
 
-  list() {
+  /**
+   *
+   */
+  list () {
     return this.calculationHistory
   }
 }
