@@ -22,10 +22,22 @@ export function isNumber(token) {
   } else return false
 }
 
+/**
+ * Checks if a char is a digit.
+ * 
+ * @param {char} char 
+ * @returns {boolean}
+ */
 export function isDigit(char) {
   return /\d/.test(char)
 }
 
+/**
+ * Checks if a char is a decimal, supports both a period or decimal.
+ * 
+ * @param {char} char 
+ * @returns {boolean}
+ */
 export function isDecimal(char) {
   return char === "," || char === "."
 }

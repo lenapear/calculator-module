@@ -46,10 +46,23 @@ export class Parser {
     return tokenizedExpression
   }
 
+  /**
+   * Handles digit characters or decimals.
+   *
+   * @param {number || char} char 
+   * @param {array} buffer 
+   */
   handleNumberChar(char, buffer) {
   buffer.push(char)
   }
 
+  /**
+   * Handles operator characters.
+   *
+   * @param {char} char 
+   * @param {array} buffer 
+   * @param {array} tokenizedExpression 
+   */
   handleOperator(char, buffer, tokenizedExpression) {
     if (buffer.length > 0) {
       this.flushBuffer(buffer, tokenizedExpression)
@@ -57,6 +70,12 @@ export class Parser {
     tokenizedExpression.push(char)
   }
 
+  /**
+   * Flushes the buffer array into the tpkenizedExpression array and resets the buffer.
+   * 
+   * @param {array} buffer 
+   * @param {array} tokenizedExpression 
+   */
   flushBuffer(buffer, tokenizedExpression) {
     tokenizedExpression.push(buffer.join(""))
     buffer.length = 0
