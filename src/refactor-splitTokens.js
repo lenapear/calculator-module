@@ -10,22 +10,31 @@ splitTokens(expression) {
   // when there's an operator, flush the buffer and add to the array and then add
   for (let char of expressionArray) {
     if (isDigit(char) || isDecimal(char)) {
-      buffer.push(char)
+      this.handleNumberChar(char, buffer)
     } else if (isOperator(char)) {
-      let result = this.flushArray(buffer)
-      tokenizedExpression.push(result)
-      tokenizedExpression.push(char)
-      buffer = []
+      this.handleOperator(char, buffer, tokenizedExpression)
     }
   }
 
   if (buffer.length > 0) {
-    tokenizedExpression.push(this.flushArray(buffer))
+    this.flushBuffer(buffer, tokenizedExpression)
   }
 
   return tokenizedExpression
 }
 
-flushArray(buffer) {
-  return Number(buffer.join(""))
+handleNumberChar(char, buffer) {
+  buffer.push(char)
+}
+
+handleOperator(char, buffer, tokenizedExpression) {
+  if (buffer.length > 0) {
+    this.flushBuffer(buffer, tokenizedExpression)
+  }
+  tokenizedExpression.push(char)
+}
+
+flushBuffer(buffer, tokenizedExpression) {
+  tokenizedExpression.push(Number(buffer.join("")))
+  buffer.length = 0
 }
