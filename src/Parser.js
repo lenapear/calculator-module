@@ -26,40 +26,41 @@ export class Parser {
    * @param {string} expression - The user's expression input to be tokenized.
    */
   splitTokens(expression) {
-      let expressionArray = expression.split("")
-  let tokenizedExpression = []
-  let buffer = []
-  
-  for (let char of expressionArray) {
-    if (isDigit(char) || isDecimal(char)) {
-      this.handleNumberChar(char, buffer)
-    } else if (isOperator(char)) {
-      this.handleOperator(char, buffer, tokenizedExpression)
+    let expressionArray = expression.split("")
+    let tokenizedExpression = []
+    let buffer = []
+    
+    for (let char of expressionArray) {
+      if (char === " ") continue 
+      if (isDigit(char) || isDecimal(char)) {
+        this.handleNumberChar(char, buffer)
+      } else if (isOperator(char)) {
+        this.handleOperator(char, buffer, tokenizedExpression)
+      }
     }
-  }
 
-  if (buffer.length > 0) {
-    this.flushBuffer(buffer, tokenizedExpression)
-  }
+    if (buffer.length > 0) {
+      this.flushBuffer(buffer, tokenizedExpression)
+    }
 
-  return tokenizedExpression
+    return tokenizedExpression
   }
 
   handleNumberChar(char, buffer) {
   buffer.push(char)
-}
-
-handleOperator(char, buffer, tokenizedExpression) {
-  if (buffer.length > 0) {
-    this.flushBuffer(buffer, tokenizedExpression)
   }
-  tokenizedExpression.push(char)
-}
 
-flushBuffer(buffer, tokenizedExpression) {
-  tokenizedExpression.push(Number(buffer.join("")))
-  buffer.length = 0
-}
+  handleOperator(char, buffer, tokenizedExpression) {
+    if (buffer.length > 0) {
+      this.flushBuffer(buffer, tokenizedExpression)
+    }
+    tokenizedExpression.push(char)
+  }
+
+  flushBuffer(buffer, tokenizedExpression) {
+    tokenizedExpression.push(buffer.join(""))
+    buffer.length = 0
+  }
 
   /**
    * Checks if the first token is an operator.
