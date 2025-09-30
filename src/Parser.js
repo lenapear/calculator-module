@@ -49,7 +49,7 @@ export class Parser {
   /**
    * Handles digit characters or decimals.
    *
-   * @param {number || char} char 
+   * @param {number | string} char 
    * @param {array} buffer 
    */
   handleNumberChar(char, buffer) {
@@ -59,7 +59,7 @@ export class Parser {
   /**
    * Handles operator characters.
    *
-   * @param {char} char 
+   * @param {string} char 
    * @param {array} buffer 
    * @param {array} tokenizedExpression 
    */
