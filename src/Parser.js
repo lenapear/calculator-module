@@ -1,12 +1,8 @@
-/**
- * Represents the Parser class.
- * Responsible for validating and tokenizing mathematical expressions.
- */
-
 import { isOperator, isNumber, isDigit, isDecimal } from './Helpers.js'
 
 /**
- *
+ * Represents the Parser class.
+ * Responsible for validating and tokenizing mathematical expressions.
  */
 export class Parser {
   /**

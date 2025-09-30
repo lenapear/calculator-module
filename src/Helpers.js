@@ -1,20 +1,20 @@
-// helper functions
+// Helper functions
 
 /**
- * Checks if a token is an operator.
+ * Checks if a token is an operator (+, -, *, /).
  *
- * @param {string} token
- * @returns {boolean}
+ * @param {string} token - The token to check.
+ * @returns {boolean} True if the token is an operator, false otherwise.
  */
 export function isOperator (token) {
   return ['+', '-', '*', '/'].includes(token)
 }
 
 /**
- * Checks if a token is a number or not.
+ * Checks if a token represents a valid number.
  *
- * @param {number|string} token - The token to be checked.
- * @returns {boolean} true if the token is a number, false if not.
+ * @param {string|number} token - The token to be checked.
+ * @returns {boolean} True if the token is a number, false otherwise.
  */
 export function isNumber (token) {
   const convert = Number(token)
@@ -24,20 +24,21 @@ export function isNumber (token) {
 }
 
 /**
- * Checks if a char is a digit using regex.
+ * Checks if a character is a digit (0–9).
  *
- * @param {char} char
- * @returns {boolean}
+ * @param {string} char - The character to check.
+ * @returns {boolean} True if the character is a digit, false otherwise.
  */
 export function isDigit (char) {
   return /\d/.test(char)
 }
 
 /**
- * Checks if a char is a decimal, supports both a period or decimal.
+ * Checks if a character is a decimal separator.
+ * Supports both period (.) and comma (,).
  *
- * @param {char} char
- * @returns {boolean}
+ * @param {string} char - The character to check.
+ * @returns {boolean} True if the character is a decimal separator, false otherwise.
  */
 export function isDecimal (char) {
   return char === ',' || char === '.'
