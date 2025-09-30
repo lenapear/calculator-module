@@ -25,11 +25,11 @@ export class Calculator {
    * @returns {number} - The final evaluated result.
    */
   calculate(expression) {
-    const validatedExpression = this.validateExpression(expression)
+    const validatedExpression = this.parseExpression(expression)
     const convertedExpression = this.convertExpression(validatedExpression)
     const result = this.evaluateExpression(convertedExpression)
 
-    this.updateCalcHistory(expression, result)
+    this.addToHistory(expression, result)
     return result
   }
 
