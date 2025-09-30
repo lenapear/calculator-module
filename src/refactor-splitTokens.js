@@ -1,4 +1,4 @@
-import { isOperator, isNumber, isDecimal } from "./Helpers.js"
+import { isOperator, isNumber, isDigit, isDecimal } from "./Helpers.js"
 
 splitTokens(expression) {
   let expressionArray = expression.split("")
@@ -20,12 +20,12 @@ splitTokens(expression) {
   }
 
   if (buffer.length > 0) {
-    this.tokenizedExpression.push(this.flushArray(buffer))
+    tokenizedExpression.push(this.flushArray(buffer))
   }
 
   return tokenizedExpression
 }
 
 flushArray(buffer) {
-  return buffer.join("")
+  return Number(buffer.join(""))
 }
