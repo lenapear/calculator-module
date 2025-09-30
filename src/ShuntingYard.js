@@ -1,6 +1,5 @@
 /**
  * Represents the ShuntingYard class
- * lena's note: convert infix tokens to postfix (RPN)
  */
 
 import { isOperator, isNumber } from "./Helpers.js"

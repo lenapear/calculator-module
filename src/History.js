@@ -1,6 +1,5 @@
 /**
  * Represents the History class
- * lena's note: handles the calculation history
  */
 export class History {
   constructor() {

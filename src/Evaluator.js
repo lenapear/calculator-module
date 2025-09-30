@@ -1,6 +1,5 @@
 /**
  * Represents the Evaluator class
- * lena's note: evaluates and calculate the postfix expression
  */
 
 import { isOperator, isNumber } from "./Helpers.js"

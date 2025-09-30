@@ -1,6 +1,6 @@
 /**
  * Represents the Calculator class
- * lena's notes: orchestrates the flow
+ * Note: Orchestrates the flow
  */
 
 import { Evaluator } from "./Evaluator.js"
@@ -12,7 +12,7 @@ import { ShuntingYard} from "./ShuntingYard.js"
 export class Calculator {
 
   constructor() {
-    this.history = new History
+    this.history = new History()
   }
 
   calculate(expression) {
@@ -42,8 +42,16 @@ export class Calculator {
     return result
   }
 
-  updateCalcHistory(expression, result ) {
+  addToHistory(expression, result ) {
     this.history.add(expression, result)
+  }
+
+  removeFromHistory(expression) {
+    this.history.remove(expression)
+  }
+
+  getHistory() {
+    return this.history.list()
   }
 }
 
