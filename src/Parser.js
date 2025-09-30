@@ -10,7 +10,7 @@ export class Parser {
    * Validate and parse and expression into tokens.
    *
    * @param {string} expression - The user's expression input to be tokenized.
-   * @returns {array} validTokens - The array of validated tokens.
+   * @returns {Array<string|number>} validTokens - The array of validated tokens.
    */
   validateAndParse(expression) { // is parseExpression better??
     const tokenizedExpression = this.splitTokens(expression)
@@ -50,7 +50,7 @@ export class Parser {
    * Handles digit characters or decimals.
    *
    * @param {number | string} char 
-   * @param {array} buffer 
+   * @param {Array<string|number>} buffer 
    */
   handleNumberChar(char, buffer) {
   buffer.push(char)
@@ -60,8 +60,8 @@ export class Parser {
    * Handles operator characters.
    *
    * @param {string} char 
-   * @param {array} buffer 
-   * @param {array} tokenizedExpression 
+   * @param {Array<string|number>} buffer 
+   * @param {Array<string|number>} tokenizedExpression 
    */
   handleOperator(char, buffer, tokenizedExpression) {
     if (buffer.length > 0) {
@@ -73,8 +73,8 @@ export class Parser {
   /**
    * Flushes the buffer as a string token (conversion to number happens in validation)
    * 
-   * @param {array} buffer 
-   * @param {array} tokenizedExpression 
+   * @param {Array<string|number>} buffer 
+   * @param {Array<string|number>} tokenizedExpression 
    */
   flushBuffer(buffer, tokenizedExpression) {
     tokenizedExpression.push(buffer.join(""))
@@ -127,7 +127,7 @@ export class Parser {
   /**
    * Validate the tokens to only allow numbers and valid operators.
    *
-   * @param {array} tokens - The tokens to be validated.
+   * @param {Array<string|number>} tokens - The tokens to be validated.
    */
   validateTokens(tokens) {
     const validTokens = []
@@ -148,7 +148,7 @@ export class Parser {
   /**
    * Validates the format of the tokens by checking the first and last token and the sequence.
    * 
-   * @param {array} tokens
+   * @param {Array<string|number>} tokens
    */
   validateFormat(tokens) {
     this.checkFirstToken(tokens)

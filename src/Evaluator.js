@@ -9,7 +9,7 @@ export class Evaluator {
   /**
    * Evaluates the postfixExpression
    *
-   * @param {array} postfixExpression 
+   * @param {Array<string|number>} postfixExpression 
    * @returns {number} the final evaluated result
    */
   evaluate(postfixExpression) {
@@ -24,7 +24,7 @@ export class Evaluator {
    * Processes the tokens and call the methods according to the type of token.
    * 
    * @param {string | number} token 
-   * @param {array} stack 
+   * @param {Array<number>} stack 
    */
   processToken(token, stack) {
     if (isNumber(token)) {
@@ -38,7 +38,7 @@ export class Evaluator {
    * Pushes the number token inside the stack.
    * 
    * @param {number} number
-   * @param {array} stack 
+   * @param {Array<number>} stack 
    */
   processNumber(number, stack) {
     stack.push(number)
@@ -48,7 +48,7 @@ export class Evaluator {
    * Process the operator by calculating the last 2 operands in the stack.
    *
    * @param {string} operator 
-   * @param {array} stack 
+   * @param {Array<number>} stack 
    */
   processOperator(operator, stack) {
     let rightOperand = stack.pop()
@@ -60,7 +60,7 @@ export class Evaluator {
   /**
    * Gets the final result.
    *
-   * @param {array} stack 
+   * @param {Array<number>} stack 
    * @returns {number} finalResult
    */
   getFinalResult(stack) {
