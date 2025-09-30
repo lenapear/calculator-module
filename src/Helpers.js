@@ -23,7 +23,7 @@ export function isNumber(token) {
 }
 
 /**
- * Checks if a char is a digit.
+ * Checks if a char is a digit using regex.
  * 
  * @param {char} char 
  * @returns {boolean}

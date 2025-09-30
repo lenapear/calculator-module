@@ -75,3 +75,42 @@ try {
   console.error("checkSequence error:", err.message)
   // expected: "Two operators in a row is not allowed"
 }
+
+// --- After refactoring splitTokens ---
+
+// Test multi-digit numbers
+try {
+  const parser4 = new Parser("12 + 34")
+  console.log("Test 4 passed:", parser4.validateAndParse("12 + 34"))
+  // expected: [12, "+", 34]
+} catch (err) {
+  console.error("Test 4 error:", err.message)
+}
+
+// Test decimal numbers
+try {
+  const parser5 = new Parser("3.14 * 2")
+  console.log("Test 5 passed:", parser5.validateAndParse("3.14 * 2"))
+  // expected: [3.14, "*", 2]
+} catch (err) {
+  console.error("Test 5 error:", err.message)
+}
+
+// Test expression without spaces
+try {
+  const parser6 = new Parser("10+20*3")
+  console.log("Test 6 passed:", parser6.validateAndParse("10+20*3"))
+  // expected: [10, "+", 20, "*", 3]
+} catch (err) {
+  console.error("Test 6 error:", err.message)
+}
+
+// Test whitespace handling
+try {
+  const parser7 = new Parser("   7    -   2   ")
+  console.log("Test 7 passed:", parser7.validateAndParse("   7    -   2   "))
+  // expected: [7, "-", 2]
+} catch (err) {
+  console.error("Test 7 error:", err.message)
+}
+

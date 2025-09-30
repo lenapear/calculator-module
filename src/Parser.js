@@ -71,7 +71,7 @@ export class Parser {
   }
 
   /**
-   * Flushes the buffer array into the tpkenizedExpression array and resets the buffer.
+   * Flushes the buffer as a string token (conversion to number happens in validation)
    * 
    * @param {array} buffer 
    * @param {array} tokenizedExpression 
