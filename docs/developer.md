@@ -86,3 +86,15 @@ git commit -m "feat(parser): add support for multi-digit numbers"
 ````
 * Push and create a pull request.
 
+### Public vs Private Methods
+
+At the moment, all methods are public.  
+This is intentional to make unit testing of helper functions easier during development.  
+
+**In the future:**
+- Only core API methods (e.g., `Calculator.calculate`, `Parser.validateAndParse`, `ShuntingYard.toPostfix`, `Evaluator.evaluate`, `History.add/list/remove`) will remain public.
+- Internal helper methods (e.g., `flushBuffer`, `handleOperator`, `getPrecedence`) will be made private (using `#` or `_` convention).
+- Tests will then focus only on the public API.
+
+
+

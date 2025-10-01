@@ -43,10 +43,12 @@ const parser = new Parser()
 console.log(parser.validateAndParse("12 * 5 - 3"))
 // → [12, "*", 5, "-", 3]
 ```
+
 ## Testing
 Tests are included for development and validation purposes.
 You **do not need to run the tests** to use the module — they are for contributors and maintainers. <br>
 Inside the docs/ folder, you will also find a **test report** that summarizes how the module was tested and how you can replicate the tests.
+> **Note**: All methods are currently public for testing purposes. In a future release, helper methods will be made private to improve encapsulation. Users should only rely on the documented public API.
 ## Project Structure
 ```
 .
